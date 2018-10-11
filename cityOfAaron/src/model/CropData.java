@@ -27,8 +27,12 @@ public class CropData {
     private int eatenByRats;
     private int wheatForPeople;
     
-    //Functions
+    //Constrctor
 
+    public CropData() {
+    }
+        
+    //Functions
     public int getYear() {
         return year;
     }
