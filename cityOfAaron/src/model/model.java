@@ -63,5 +63,16 @@ public class model {
                         + Kingdom1.getWheatForPeople() + "\n");
         
         
+        
+        //Test for Location Class
+        Location Rexburg = new Location();
+        
+        Rexburg.setDescription("Rexburg is a city in Madison County, Idaho,");
+        Rexburg.setSymbol("The Spirit of Ricks");
+        
+        System.out.println("Description" +Rexburg.getDescription()
+                        + "Symbol" + Rexburg.getSymbol());
+        
+        
     }
 }
