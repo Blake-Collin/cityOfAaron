@@ -51,7 +51,6 @@ public class CityOfAaron {
         Rexburg.setDescription("Rexburg is a city in Madison County, Idaho,");
         Rexburg.setSymbol("The Spirit of Ricks");
         
-        System.out.println("Description: " + Rexburg.getDescription()
-                        + " Symbol: " + Rexburg.getSymbol());
+        System.out.println(Rexburg.toString());
     }
 }
