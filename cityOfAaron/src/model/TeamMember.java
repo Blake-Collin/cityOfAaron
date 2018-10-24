@@ -1,11 +1,13 @@
 package model;
 
+import java.io.Serializable;
+
 /*
  * CIT-260
  * Fall 2018
  * Team members: Collin Blake, Jacob Gallegos, Daniel Martin
  */
-public enum TeamMember {
+public enum TeamMember implements Serializable{
 
     Collin("Collin", "He who works too much!"),
     Jacob("Jacob", "He who naps!"),
@@ -29,5 +31,9 @@ public enum TeamMember {
     public String getTitle() {
         return title;
     }
-    
+
+    @Override
+    public String toString() {
+        return "TeamMember{" + "name=" + name + ", title=" + title + '}';
+    }    
 }
