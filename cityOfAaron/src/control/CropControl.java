@@ -7,8 +7,7 @@ import model.CropData;
 /**
  *The CropControlclass -part of the control layer
  * class contains all of the calculation methods for managing the crops
- * Author: 
- * 
+ * Author: Collin, Jacob & Daniel 
  **/
 public class CropControl implements Serializable{
 
@@ -64,6 +63,7 @@ public class CropControl implements Serializable{
     *@param a reference to CropData
     *PreConditions: acresToBuy must be positive
     * and landPrice is between 17-27
+    * Author Collin, Jacob, Daniel
     */
     public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
     {
@@ -103,11 +103,35 @@ public class CropControl implements Serializable{
         return cropData.getAcresOwned();
     }
     
+    
     public static int calcLandCost()
     {
         int landPrice= random.nextInt(LAND_RANGE) + LAND_BASE;
         return landPrice;
     }
            
+    /**
+    *The setOffering Method
+    *Purpose: To set the Offering %
+    *@param integer to be converted to % for offering
+    *@param a reference to CropData
+    *Pre-Conditions: offeringPrecentage is in the range of 0 to 100
+    */
+    public static int setOffering(int offeringPrecentage, CropData cropData)
+    {
+        //If offeringPrecentage < 0 OR offeringPrecentage > 100 , return -1
+        if (offeringPrecentage < 0 || offeringPrecentage > 100)
+        {
+            return -1;
+        }
         
+        //offering = offeringPrecentage
+        cropData.setOffering(offeringPrecentage);
+        
+        //return offering
+        return cropData.getOffering();
+    }
+   
+    
+    
 }
