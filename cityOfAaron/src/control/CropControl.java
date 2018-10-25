@@ -131,7 +131,56 @@ public class CropControl implements Serializable{
         //return offering
         return cropData.getOffering();
     }
-   
+    
+    /**
+    *The plantCrops Method
+    *Purpose: To Plant Crops
+    *@param acresToPlant
+    *@param reference acresOwned
+    *@param reference wheatInStore
+    *Pre-Conditions: acresToPlant must be positive
+    * and acresToPlant is less than or equal to acresOwned, 
+    * and wheatInStore is two times or more than acresToPlant 
+    */
+
+    public static int plantCrops(int acresToPlant, CropData cropData)
+    {
+
+        //If acresToPlant < 0, return -1
+        if (acresToPlant < 0)
+        {
+            return -1;
+        }
+            
+        //If acresToPlant is > acresOwned, return -1
+        int acresOwned = cropData.getAcresOwned();
+        
+        if (acresToPlant > cropData.getAcresOwned())
+        {
+            return -1;
+        }
+            
+        //If wheatInStore < (acresToPlant * 2), return -1
+        int wheatInStore = cropData.getWheatInStore();
+        
+        if (wheatInStore < (acresToPlant *2))
+        {
+            return -1;
+        }    
+              
+        //acresPlanted = acresPlanted + acresToPlant
+        int acresPlanted = cropData.getAcresPlanted();
+        acresPlanted += acresToPlant;
+        cropData.setAcresPlanted(acresPlanted);
+        
+        //wheatInStore = wheatInStore – (acresToPlant *2)
+        wheatInStore -= (acresToPlant * 2);
+        cropData.setWheatInStore(wheatInStore);
+        
+        //return wheatInStore
+        return wheatInStore;
+        
+    }
     
     
 }
