@@ -182,5 +182,45 @@ public class CropControl implements Serializable{
         
     }
     
+    /**
+    *The Feed People Method
+    * Purpose: To Feed People
+    *@param wheatOwned
+    *@param bushelsToGive
+    *@param cropData
+    *@param bushelCost
+    *@param bushelsOwned
+    *Pre-Conditions: Number of bushels of grain needs to be positive
+    *enough wheat in storage to purchase
+    *Author: Jacob Gallegos
+    */
+    
+    public static int feedThePeople(int bushelsToGive, CropData cropData)
+    {
+        int wheatOwned = cropData.getWheatInStore();
+        //If bushelsToGive < 0 return -1
+        if (bushelsToGive < 0)
+        {
+            return -1;
+        }
+        //If bushelsToGive > wheatOwned)
+        if (bushelsToGive > wheatOwned)
+        {
+            return -1;
+        }
+        //WheatInstorage =– bushelsToGive
+        wheatOwned -= bushelsToGive;
+        //Output wheatinstorage
+        System.out.println(wheatOwned);
+        //return wheatOwned
+        return wheatOwned;
+
+        
+        
+    
+    }
+
+    
+    
     
 }

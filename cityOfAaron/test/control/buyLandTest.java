@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Beast
+ * @author Jacob Gallegos, Blake Collin, Daniel Martin
  */
 public class buyLandTest {
     
