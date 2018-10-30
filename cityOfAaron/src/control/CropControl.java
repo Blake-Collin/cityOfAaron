@@ -116,6 +116,7 @@ public class CropControl implements Serializable{
     *@param integer to be converted to % for offering
     *@param a reference to CropData
     *Pre-Conditions: offeringPrecentage is in the range of 0 to 100
+    * Author: Collin Blake
     */
     public static int setOffering(int offeringPrecentage, CropData cropData)
     {
