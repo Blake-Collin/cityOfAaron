@@ -15,6 +15,11 @@ public class ListItem implements Serializable{
     private String name;
     private Integer number;
     
+    //Constructor
+
+    public ListItem() {
+    }
+        
     //Functions
     public String getName() {
         return name;
