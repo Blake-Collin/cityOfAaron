@@ -3,6 +3,7 @@ package control;
 import java.io.Serializable;
 import java.util.Random;
 import model.CropData;
+import java.math.*;
 
 /**
  *The CropControlclass -part of the control layer
@@ -164,7 +165,7 @@ public class CropControl implements Serializable{
         //If wheatInStore < (acresToPlant * 2), return -1
         int wheatInStore = cropData.getWheatInStore();
         
-        if (wheatInStore < (acresToPlant /2))
+        if (wheatInStore < (int) Math.ceil(acresToPlant /2))
         {
             return -1;
         }    
@@ -175,7 +176,7 @@ public class CropControl implements Serializable{
         cropData.setAcresPlanted(acresPlanted);
         
         //wheatInStore = wheatInStore – (acresToPlant *2)
-        wheatInStore -= (acresToPlant / 2);
+        wheatInStore -= ((int) Math.ceil((double)acresToPlant / 2.0));
         cropData.setWheatInStore(wheatInStore);
         
         //return wheatInStore

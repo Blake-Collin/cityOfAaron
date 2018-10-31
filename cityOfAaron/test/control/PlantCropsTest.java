@@ -98,7 +98,7 @@ public class PlantCropsTest {
     @Test
     public void testPlantCropsCase5() {
         System.out.println("plantCropsCase5");
-        int acresToPlant = 2;
+        int acresToPlant = 1;
         CropData cropData = new CropData();
         cropData.setAcresOwned(20);
         cropData.setWheatInStore(3000);
