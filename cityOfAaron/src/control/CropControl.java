@@ -13,8 +13,16 @@ import java.math.*;
 public class CropControl implements Serializable{
 
     //Constants
+    //
+    private static int YIELD_BASE = 1;
+    private static int YIELD_RANGE = 4;
     private static int LAND_BASE = 17;
     private static int LAND_RANGE = 10;
+    private static int PEOPLE_PER_ACRE = 2;
+    private static int ARCES_PER_BUSHEL = 0;
+
+    private static int GROWTH_BASE = 1;
+    private static int GROWTH_RANGE = 4;
     
     //random number Generator
     private static Random random = new Random();
@@ -107,7 +115,7 @@ public class CropControl implements Serializable{
     
     public static int calcLandCost()
     {
-        int landPrice= random.nextInt(LAND_RANGE) + LAND_BASE;
+        int landPrice = random.nextInt(LAND_RANGE) + LAND_BASE;
         return landPrice;
     }
            
@@ -195,8 +203,7 @@ public class CropControl implements Serializable{
     *Pre-Conditions: Number of bushels of grain needs to be positive
     *enough wheat in storage to purchase
     *Author: Jacob Gallegos
-    */
-    
+    */    
     public static int feedThePeople(int bushelsToGive, CropData cropData)
     {
         int wheatOwned = cropData.getWheatInStore();
@@ -215,14 +222,70 @@ public class CropControl implements Serializable{
         //Output wheatinstorage
         System.out.println(wheatOwned);
         //return wheatOwned
-        return wheatOwned;
-
-        
-        
-    
+        return wheatOwned;                  
     }
 
+    /**
+     * Grow Population Method
+     * Purpose: To Grow the population
+     * @param cropData
+     * @return new population
+     * Pre-Conditions: the population is positive
+     * Author: Collin Blake
+     */
+    public static int growPopulation(CropData cropData)
+    {
+        if(cropData.getPopulation() < 1)
+        {
+            return -1;
+        }
+        
+        //1. Determine how much to grow the population (a random number between 
+        // 1 and 5 %).
+        int randomInt = random.nextInt(GROWTH_BASE) + GROWTH_RANGE;                     
+                
+        //2. Calculate the number of people who moved into the city.
+        //3. Save this value.
+        cropData.setNewPeople(Math.round(cropData.getPopulation()*randomInt));
+
+        //4. Add this number to the current population
+        //5. Save the updated value of the current population.
+        cropData.setPopulation(cropData.getPopulation() 
+                            + cropData.getNewPeople());
+                
+        return cropData.getPopulation();
+    }
     
-    
+    /**
+     * Pay the offering in bushels
+     * Purpose to assign the amount of bushels paid and 
+     * @param cropData
+     * @return new current wheat total
+     * Pre-Conditions: Offering is positive
+     * Author: Collin Blake
+     */
+    public static int payOffering(CropData cropData)
+    {
+        //pre-conditions
+        if(cropData.getOffering() < 0)
+        {
+            return -1;
+        }
+        
+        //Convert offering to double
+        double offering = ((double)cropData.getOffering()/ 100.0);
+
+        //Get number of bushesl offered round up
+        int offeringAmount = (int)(Math.round(cropData.getWheatInStore() 
+                                            * offering));
+
+        //save new amount of wheat
+        cropData.setOfferingBushels(offeringAmount);
+        cropData.setWheatInStore(cropData.getWheatInStore() 
+                                        - cropData.getOfferingBushels());
+
+        //Return the amount of wheat in store afterwards        
+        return cropData.getWheatInStore();
+    }
     
 }
