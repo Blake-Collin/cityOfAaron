@@ -84,7 +84,7 @@ public class GameMenuView {
             // if it is not a valid value, output an error message
             if (userInput < 1 || userInput > max)
             {
-                System.out.println("Option must be between 1 and " + max);
+                System.out.format("Option must be between 1 and %d.\n", max);
             }
             
         } while (userInput < 1 || userInput > max);

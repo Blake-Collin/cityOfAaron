@@ -30,10 +30,32 @@ public class CropView {
         // call the buyLandView( ) method
         buyLandView();
         
-        // add calls to the other crop view methods
-        // as they are written
-    }
+        // Other Calls
+        feedPeopleView();
 
+    }
+       
+    /**
+    * The buyLandViewmethod
+    * Purpose: interface with the user input for buying land
+    * Parameters: none
+    * Returns: none
+    */
+    public static void feedPeopleView()
+    {
+        //Ask User
+        System.out.println("How many bushels of grain do you want to give to the people?");
+        
+        //Get value and save it
+        int toGive;
+        toGive = keyboard.nextInt();
+        
+        //Call feed people
+        CropControl.feedThePeople(toGive, cropData);
+        
+        //output amonunt of wehat left.
+         System.out.format("You now own %d bushels of wheat. \n", cropData.getWheatInStore());
+    }
     
     /**
     * The buyLandViewmethod
@@ -58,8 +80,13 @@ public class CropView {
         CropControl.buyLand(price,toBuy, cropData);
         
         // output how much land we now own
-        System.out.format("You now own %d acres of land. ", cropData.getAcresOwned());
+        System.out.format("You now own %d acres of land. \n", cropData.getAcresOwned());
     }
     
+    /**
+    * Purpose: Display the corps report view
+    * Parameters: none
+    * Returns: none 
+     */
 }
 
