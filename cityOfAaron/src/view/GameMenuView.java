@@ -14,14 +14,15 @@ import cityofaaron.CityOfAaron;
  */
 public class GameMenuView {
     
+    //Variables
     private static Scanner keyboard = new Scanner(System.in);
-    private String gameMenu;
-    private int max;
+    private static String gameMenu;
+    private static int max;
     private static Game theGame= CityOfAaron.getTheGame();
     private static CropData cropData= theGame.getCropData();
     
     
-    
+    //Constructor
     public GameMenuView()
     {
         gameMenu= "\n" +
@@ -35,6 +36,9 @@ public class GameMenuView {
             " 5 -Return to Main Menu\n";
         max = 5;
     }
+    
+    
+    //Functions
     
     /**
     *The displayMenuView method
@@ -163,6 +167,7 @@ public class GameMenuView {
     */
     public void manageCrops()
     {
+        CropView.runCropsView();
         System.out.println("Manage Crops Selected.");
     }
 }
