@@ -166,7 +166,7 @@ public class GameMenuView {
     * Returns: none
     */
     public void manageCrops()
-    {
+    {       
         CropView.runCropsView();
         System.out.println("Manage Crops Selected.");
     }
