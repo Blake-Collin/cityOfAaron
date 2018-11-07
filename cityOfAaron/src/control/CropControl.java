@@ -236,9 +236,11 @@ public class CropControl implements Serializable{
             return -1;
         }
         //WheatInstorage =– bushelsToGive
-        wheatOwned -= bushelsToGive;
-        //Output wheatinstorage
-        System.out.println(wheatOwned);
+        wheatOwned = wheatOwned - bushelsToGive;
+        
+        //Save back
+        cropData.setWheatInStore(wheatOwned);
+        
         //return wheatOwned
         return wheatOwned;                  
     }
