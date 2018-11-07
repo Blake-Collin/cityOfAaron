@@ -136,6 +136,7 @@ public class MainMenuView
     * Purpose: creates game object and starts the game
     * Parameters: none
     * Returns: none
+    * Last Modified:11/06/2018
     */
     // ===================================
     public void startNewGame()
@@ -149,12 +150,15 @@ public class MainMenuView
         // Call the createNewGame() method in GameControlclass
         // pass the name as a parameter
         GameControl.createNewGame(name);
+        
         // Display a welcome message
         System.out.println("Welcome " + name + " have fun!!!");
         // Display the Game menu
+        GameMenuView gmv = new GameMenuView();
+        gmv.displayMenuView();
     }
     
-        /**
+    /**
     * The startSavedGame
     * Purpose: creates game object from save file
     * Parameters: none
