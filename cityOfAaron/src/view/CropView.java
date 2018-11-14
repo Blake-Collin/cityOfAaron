@@ -118,8 +118,6 @@ public class CropView {
         
     }
     
-    public static void plantCropsView(){}
-    
     
 }
 
