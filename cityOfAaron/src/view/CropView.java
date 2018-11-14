@@ -111,6 +111,12 @@ public class CropView {
         toSell = keyboard.nextInt();
         
         //Call the sellLand() method in the control layer to buy the land 
+        while (0 > CropControl.sellLand(price, toSell, cropData))
+        {
+            System.out.print("This value is invalid \nEnter another value: ");
+            toSell = keyboard.nextInt();
+            
+        }
         CropControl.sellLand(price, toSell, cropData);
         
         // output how much land we now own
