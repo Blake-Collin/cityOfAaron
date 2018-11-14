@@ -10,7 +10,7 @@ import cityofaaron.CityOfAaron;
  * @Class CIT260
  * @Brother Wright
  * @author Collin Blake
- * Date Last Modified: 11/06/2018
+ * Date Last Modified: 11/13/2018
  */
 public class CropView {
 
@@ -28,10 +28,11 @@ public class CropView {
     public static void runCropsView()
     {
         // call the buyLandView( ) method
-        buyLandView();
+        //buyLandView();
         
         // Other Calls
         feedPeopleView();
+        //sellLandView();
 
     }
        
@@ -51,7 +52,11 @@ public class CropView {
         toGive = keyboard.nextInt();
         
         //Call feed people
-        CropControl.feedThePeople(toGive, cropData);
+        while ( 0 > CropControl.feedThePeople(toGive, cropData))
+        {
+            System.out.print("This value is invalid.\nPlease enter another value: ");
+            toGive = keyboard.nextInt();
+        }
         
         //output amonunt of wehat left.
          System.out.format("You now own %d bushels of wheat. \n", cropData.getWheatInStore());
@@ -111,6 +116,12 @@ public class CropView {
         toSell = keyboard.nextInt();
         
         //Call the sellLand() method in the control layer to buy the land 
+        while (0 > CropControl.sellLand(price, toSell, cropData))
+        {
+            System.out.print("This value is invalid \nEnter another value: ");
+            toSell = keyboard.nextInt();
+            
+        }
         CropControl.sellLand(price, toSell, cropData);
         
         // output how much land we now own
