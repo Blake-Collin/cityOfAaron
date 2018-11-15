@@ -146,10 +146,11 @@ public class CropView {
         
         // Call the plantCrops( ) method in the control layer to plant crops
         CropControl.plantCrops(toPlant, cropData);
+        
+        //output amount of wheat left in store
+        System.out.format("you now have %d bushels of wheat in store.", cropData.getWheatInStore());
                 
     }
-    
-    
-    
+      
 }
 
