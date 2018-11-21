@@ -13,7 +13,7 @@ import model.*;
  * Date Last Modified 10/30/2018
  */
 
-public class ListMenuView 
+public class ListMenuView extends MenuView 
 {
     //Variables
     Scanner keyboard = new Scanner(System.in);
@@ -31,7 +31,7 @@ public class ListMenuView
     // ===================================
     public ListMenuView()
     {
-        listMenu= "\n" +
+        super("\n" +
             "**********************************\n" +
             "* CITY OF AARON: MAIN GAME MENU *\n" +
             "**********************************\n" +
@@ -39,74 +39,17 @@ public class ListMenuView
             " 2 -View the tools in the storehouse\n" +
             " 3 -View the provisions in the storehouse\n" +
             " 4 -View the authors of this game\n" +
-            " 5 -Quit\n";
-        max = 5;
-    }
-    
-    /**
-    * The displayMenumethod
-    * Purpose: displays the menu, gets the user's input, and does the
-    * selected action
-    * Parameters: none
-    * Returns: none
-    */
-    // =========================================================
-    public void displayMenu()
-    {
-        int menuOption = 0;
-        do
-        {
-        // Display the menu
-        System.out.println(listMenu);
-        
-        // Prompt the user and get the user’s input
-        menuOption = getMenuOption();
-        
-        // Perform the desired action
-        doAction(menuOption);
+            " 5 -Quit\n",
+             5);
+    }  
 
-        // Determine and display the next view        
-        } while(menuOption != max);
-    }
-    
-    /**
-    * The getMenuOptionmethod
-    * Purpose: gets the user's input
-    * Parameters: none    
-     * @return 
-    */
-    // ===================================
-    public int getMenuOption()
-    {
-        // declare a variable to hold user’s input
-        int userInput;
-        // begin loop
-        do
-        {
-            // get user input from the keyboard
-            userInput = keyboard.nextInt();
-            
-            // if it is not a valid value, output an error message
-            if (userInput < 1 || userInput > max)
-            {
-                System.out.println("Option must be between 1 and " + max);
-            }
-            
-        } while (userInput < 1 || userInput > max);
-        // loop back to the top if input was not valid
-        
-        // return the value input by the user
-        return userInput;
-    }
-    
     /**
     *The doActionmethod
     * Purpose: performs the selected action    
     * Returns: none
      * @param option
     */
-    // ===================================
-    public void doAction(int option)
+    @Override public void doAction(int option)
     {
       int options = option;
       if(options == 1){
@@ -122,7 +65,7 @@ public class ListMenuView
           listTeam();
       }
       else if(options == 5){
-          System.out.println("Thanks for playing... goodbye.");
+          System.out.println("Returning to game menu view.");
       }
       
       
