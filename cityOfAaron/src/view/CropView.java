@@ -82,7 +82,13 @@ public class CropView {
         toBuy = keyboard.nextInt();
         
         // Call the buyLand( ) method in the control layer to buy the land
-        CropControl.buyLand(price,toBuy, cropData);
+        
+        while (0 > CropControl.buyLand(price,toBuy, cropData))
+        {
+            System.out.print("This value is invalid \nEnter another value: ");
+            toBuy = keyboard.nextInt();
+            
+        }
         
         // output how much land we now own
         System.out.format("You now own %d acres of land. \n", cropData.getAcresOwned());

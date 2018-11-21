@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 import control.*;
+import model.*;
 
 /**
  * The MainMenuView Class - Part of the view Layer
@@ -18,6 +19,7 @@ public class ListMenuView
     Scanner keyboard = new Scanner(System.in);
     private int max;
     private String listMenu;
+    private Game theGame = CityOfAaron.getTheGame();
     
     
     /**
@@ -108,8 +110,7 @@ public class ListMenuView
     {
       int options = option;
       if(options == 1){
-          listAnimals();
-          System.out.println("List Animals");
+          listAnimals();          
       }
       else if(options == 2){
           listTools();
