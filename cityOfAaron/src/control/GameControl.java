@@ -105,7 +105,7 @@ public class GameControl {
             }
         }
         
-        //Craete river
+        //Create river
         String river = "You are on the River. The river is the source\n" +
                     "of life for our city. The river marks the eastern\n " +
                     "boundary of the city - it is wilderness to the East.\n";
@@ -194,9 +194,32 @@ public class GameControl {
         
     }
     
-    //Author: Jocab
+        /**
+    *The createProvisionsList method
+    * Purpose: creates an array and assigns animals to them
+    * Returns: none
+    * @author: Jacob Gallegos
+    */
     public static void createProvisionsList()
     {
+        //Add a method to the GameControl class to create an ArrayList,
+        //using the list of your choice Call this method from the creatNewGame
+        //method
+        ArrayList <ListItem> provisions = new ArrayList<>();
+        
+        provisions.add(new ListItem("Cows", 12));
+        provisions.add(new ListItem("Horses", 3));
+        provisions.add(new ListItem("Pigs", 7));
+        provisions.add(new ListItem("Goats", 4));
+        
+        theGame.setProvisions(provisions);
+        
+
+        
+        //complete assigment by writing the code to display your list when the
+        //user selects in the list menu
+        
+        
         
     }
 }
