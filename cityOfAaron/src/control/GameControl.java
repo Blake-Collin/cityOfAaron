@@ -191,7 +191,9 @@ public class GameControl {
     //Author: Collin
     public static void createToolsList()
     {
+        ArrayList<ListItem> tools = new ArrayList<>();
         
+        tools.add(new ListItem(,));
     }
     
     //Author: Jocab
