@@ -192,8 +192,7 @@ public class GameControl {
     public static void createToolsList()
     {
         ArrayList<ListItem> tools = new ArrayList<>();
-        
-        tools.add(new ListItem(,));
+                
     }
     
     //Author: Jocab
