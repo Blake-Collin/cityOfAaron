@@ -187,15 +187,28 @@ public class GameControl {
     {
         
     }
-    
-    //Author: Collin
+    /**
+     * The create tools method
+     * Purpose: Create an array of the tools available.
+     * Returns nothing
+     * Author: Collin
+     */       
     public static void createToolsList()
     {
         ArrayList<ListItem> tools = new ArrayList<>();
-                
+        
+        tools.add(new ListItem("Hammers", 823));
+        tools.add(new ListItem("Shovels", 523));
+        tools.add(new ListItem("Hoes", 923));
+        tools.add(new ListItem("Pickaxes", 243));
+        tools.add(new ListItem("Rakes", 513));
+        tools.add(new ListItem("Hand Saws", 323));
+        tools.add(new ListItem("SledgeHammers", 623));
+        
+        theGame.setTools(tools);
     }
     
-        /**
+    /**
     *The createProvisionsList method
     * Purpose: creates an array and assigns animals to them
     * Returns: none
