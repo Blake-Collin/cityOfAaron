@@ -17,7 +17,9 @@ public class ListItem implements Serializable{
     
     //Constructor
 
-    public ListItem() {
+    public ListItem(String name1, Integer number1) {
+        name = name1;
+        number = number1;
     }
         
     //Functions

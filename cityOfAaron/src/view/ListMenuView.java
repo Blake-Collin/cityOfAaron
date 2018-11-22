@@ -101,15 +101,26 @@ public class ListMenuView extends MenuView
     
         /**
     * The listTools method
-    * Purpose: Displays help menu
+    * Purpose: Displays a list of the Provisions
     * Parameters: none
     * Returns: none
+    * Author: Jacob Gallegos
     */
     // ===================================
     public void listProvisions()
     {
         //List the number of provisions in the storehouse
-        System.out.println("View Porvisons Selected");
+        //This is my code for printing it out. It does not work I am trying
+        //To figure it out.
+        
+//        for(int i = 0; i < theGame.getProvisions().size(); i++){
+//            for(int j = 0; j < theGame.getProvisions().get(i).size(); j++)
+//            {
+//                System.out.println(theGame.getProvisions().get(i).get(j));
+//            
+//            }
+//            
+//            }
         
     }
     
