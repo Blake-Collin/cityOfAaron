@@ -91,13 +91,18 @@ public class ListMenuView extends MenuView
     * Purpose: List the number of Tools in the storehouse
     * Parameters: none
     * Returns: none
+    * Author: Collin Blake
     */
     // ===================================
     public void listTools()
     {
-        //List the number of Tools in the storehouse
-        System.out.println("View tools selected");
-    }
+        System.out.println("Tools in the City of Aaron:");
+        for(ListItem item : theGame.getTools())
+        {           
+             String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
+            System.out.println(line);
+        }
+    } 
     
         /**
     * The listTools method

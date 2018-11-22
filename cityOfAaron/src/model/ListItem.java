@@ -15,11 +15,16 @@ public class ListItem implements Serializable{
     private String name;
     private Integer number;
     
-    //Constructor
+    //Constructors
 
     public ListItem(String name1, Integer number1) {
         name = name1;
         number = number1;
+    }
+    
+    public ListItem(String pName, Integer pNumber) {
+        name = pName;
+        number = pNumber;
     }
         
     //Functions
