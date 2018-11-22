@@ -209,31 +209,23 @@ public class GameControl {
     }
     
     /**
-    *The createProvisionsList method
-    * Purpose: creates an array and assigns animals to them
+    * The createProvisionsList method
+    * Purpose: creates an array and assigns provisions to them
     * Returns: none
     * @author: Jacob Gallegos
     */
     public static void createProvisionsList()
     {
-        //Add a method to the GameControl class to create an ArrayList,
-        //using the list of your choice Call this method from the creatNewGame
-        //method
+        //Create an Array List for the provisions
         ArrayList <ListItem> provisions = new ArrayList<>();
         
-        provisions.add(new ListItem("Cows", 12));
-        provisions.add(new ListItem("Horses", 3));
-        provisions.add(new ListItem("Pigs", 7));
-        provisions.add(new ListItem("Goats", 4));
+        //Add some Provisions
+        provisions.add(new ListItem("Water", 12));
+        provisions.add(new ListItem("Food", 3));
+        provisions.add(new ListItem("Shoes", 1));
+        provisions.add(new ListItem("Clothes", 2));
         
-        theGame.setProvisions(provisions);
-        
-
-        
-        //complete assigment by writing the code to display your list when the
-        //user selects in the list menu
-        
-        
+        theGame.setProvisions(provisions); 
         
     }
 }
