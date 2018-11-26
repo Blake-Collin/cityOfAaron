@@ -182,9 +182,22 @@ public class GameControl {
         }
     }
     
-    //Author: Daniel
+     /**
+     * The create animals list method
+     * Purpose: Create an array of the animals
+     * Returns nothing
+     * Author: Daniel
+     */   
     public static void createAnimalsList()
     {
+        ArrayList<ListItem> animals = new ArrayList<>();
+        
+        animals.add(new ListItem("Horses", 100));
+        animals.add(new ListItem("Cows", 200));
+        animals.add(new ListItem("Chickens", 300));
+        animals.add(new ListItem("Pigs", 150));
+               
+        theGame.setAnimals(animals);
         
     }
     /**
