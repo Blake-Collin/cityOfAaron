@@ -84,6 +84,12 @@ public class ListMenuView extends MenuView
     {
       // List the number of Animals in the storehouse
         System.out.println("View Animals Selected");
+        for(ListItem item : theGame.getAnimals())
+        {           
+             String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
+            System.out.println(line);
+        }
+        
     }
     
     /**
