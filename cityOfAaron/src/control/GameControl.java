@@ -192,10 +192,10 @@ public class GameControl {
     {
         ArrayList<ListItem> animals = new ArrayList<>();
         
-        animals.add(new ListItem("Horses", 100));
-        animals.add(new ListItem("Cows", 200));
-        animals.add(new ListItem("Chickens", 300));
-        animals.add(new ListItem("Pigs", 150));
+        animals.add(new ListItem("Horses", 13));
+        animals.add(new ListItem("Cows", 12));
+        animals.add(new ListItem("goats", 4));
+        animals.add(new ListItem("Pigs", 7));
                
         theGame.setAnimals(animals);
         
