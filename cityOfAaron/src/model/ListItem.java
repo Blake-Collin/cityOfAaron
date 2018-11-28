@@ -22,8 +22,8 @@ public class ListItem implements Serializable{
     
     public ListItem(String pName, Integer pNumber) 
     {
-        name = pName;
-        number = pNumber;
+        setName(pName);
+        setNumber(pNumber);
     }
         
     //Functions

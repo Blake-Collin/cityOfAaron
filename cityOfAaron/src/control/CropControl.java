@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Random;
 import model.CropData;
 import java.math.*;
+import exceptions.*;
 
 /**
  *The CropControlclass -part of the control layer
@@ -92,31 +93,32 @@ public class CropControl implements Serializable{
     * and landPrice is between 17-27
     * Author Collin, Jacob, Daniel
     */
-    public static int buyLand(int landPrice, int acresToBuy, CropData cropData)
+    public static int buyLand(int landPrice, int acresToBuy, CropData cropData) throws CropException
     {
         //If acresToBuy < 0, return -1
         if (acresToBuy < 0)
         {
-            return -1;
+            throw new CropException("A negative value was input.");
         }
                 
         //If landPrice < 17 or landPrice > 27, return -1
         if (landPrice < 17 || landPrice > 27)
         {
-            return -1;
+            throw new CropException("Random price failed.");
         }
         
         //If (acresOwned + acresToBuy) / 10 > population, return -1
         if (((cropData.getAcresOwned() + acresToBuy) / 10) 
             > cropData.getPopulation())
         {
-            return -1;
+            throw new CropException("Not enough people to work this much land.");
         }
         
         //If wheatInStore < (acresToBuy * landPrice), return -1
         if (cropData.getWheatInStore() < (acresToBuy * landPrice))
-        {
-            return -1;
+        {            
+            throw new CropException("There is insufficient wheat to buy this much land.");
+
         }
         
         //acresOwned = acresOwned + acresToBuy

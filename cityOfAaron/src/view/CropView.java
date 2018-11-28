@@ -2,6 +2,7 @@ package view;
 
 import model.*;
 import control.*;
+import exceptions.*;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 
@@ -12,7 +13,8 @@ import cityofaaron.CityOfAaron;
  * @author Collin Blake
  * Date Last Modified: 11/13/2018
  */
-public class CropView {
+public class CropView extends MenuView 
+{
 
     //Variables
     private static Scanner keyboard = new Scanner(System.in);
@@ -25,15 +27,44 @@ public class CropView {
     * Parameters: none
     * Returns: none
     */
-    public static void runCropsView()
+    public CropView()
     {
-        // call the buyLandView( ) method
-        //buyLandView();
-        
-        // Other Calls
-        feedPeopleView();
-        //sellLandView();
-
+        super("\n" +
+            "**********************************\n" +
+            "*CITY OF AARON: Manage Crops Menu* \n" +
+            "**********************************\n" +
+            " 1 -Buy Land\n" +
+            " 2 -Sell Land\n" +
+            " 3 -Feed the People\n" +
+            " 4 -Plant the Crops\n" +
+            " 5 -Return to Game Menu\n",
+             5);
+    }
+    
+    /**
+    *The doActionmethod
+    * Purpose: performs the selected action    
+    * Returns: none
+     * @param option
+    */
+    @Override public void doAction(int option)
+    {
+      int options = option;
+      if(options == 1){
+          buyLandView();
+      }
+      else if(options == 2){          
+          sellLandView();
+      }
+      else if(options == 3){          
+          feedPeopleView();          
+      }
+      else if(options == 4){
+          plantCropsView();
+      }
+      else if(options == 5){
+          System.out.println("Returning to game menu view.");
+      }            
     }
        
     /**
@@ -80,15 +111,25 @@ public class CropView {
         // Get the user’s input and save it.
         int toBuy;
         toBuy = keyboard.nextInt();
-        
-        // Call the buyLand( ) method in the control layer to buy the land
-        
-        while (0 > CropControl.buyLand(price,toBuy, cropData))
+        boolean paramsNotOkay;
+                
+        // Call the buyLand( ) method in the control layer to buy the land        
+        do
         {
-            System.out.print("This value is invalid \nEnter another value: ");
+            paramsNotOkay = false;
             toBuy = keyboard.nextInt();
-            
+            try
+            {
+                CropControl.buyLand(price, toBuy, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
         }
+        while(paramsNotOkay);
         
         // output how much land we now own
         System.out.format("You now own %d acres of land. \n", cropData.getAcresOwned());
@@ -131,7 +172,7 @@ public class CropView {
         CropControl.sellLand(price, toSell, cropData);
         
         // output how much land we now own
-        System.out.format("You now own %d acres of land. /n", cropData.getAcresOwned());
+        System.out.format("You now own %d acres of land. \n", cropData.getAcresOwned());
         
     }
     
