@@ -16,7 +16,12 @@ public class ListItem implements Serializable{
     private Integer number;
     
     //Constructors
-    public ListItem(String pName, Integer pNumber) {
+    public ListItem() 
+    {    
+    }
+    
+    public ListItem(String pName, Integer pNumber) 
+    {
         name = pName;
         number = pNumber;
     }
