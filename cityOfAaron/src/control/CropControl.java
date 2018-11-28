@@ -222,20 +222,20 @@ public class CropControl implements Serializable{
     *@param bushelsOwned
     *Pre-Conditions: Number of bushels of grain needs to be positive
     *enough wheat in storage to purchase
-    *Author: Jacob Gallegos
+    *Author: Jacob Gallegos & Collin Blake
     */    
-    public static int feedThePeople(int bushelsToGive, CropData cropData)
+    public static int feedThePeople(int bushelsToGive, CropData cropData) throws CropException
     {
         int wheatOwned = cropData.getWheatInStore();
         //If bushelsToGive < 0 return -1
         if (bushelsToGive < 0)
         {
-            return -1;
+            throw new CropException("You entered a negative number.");
         }
         //If bushelsToGive > wheatOwned)
         if (bushelsToGive > wheatOwned)
         {
-            return -1;
+            throw new CropException("You do not have enough bushels to purchase that much land.");
         }
         //WheatInstorage =– bushelsToGive
         wheatOwned = wheatOwned - bushelsToGive;

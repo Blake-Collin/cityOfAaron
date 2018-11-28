@@ -81,13 +81,29 @@ public class CropView extends MenuView
         //Get value and save it
         int toGive;
         toGive = keyboard.nextInt();
+        boolean paramsNotOkay = false;
         
         //Call feed people
-        while ( 0 > CropControl.feedThePeople(toGive, cropData))
+        do
         {
+            
             System.out.print("This value is invalid.\nPlease enter another value: ");
             toGive = keyboard.nextInt();
-        }
+        
+        
+            paramsNotOkay = false;
+            toGive = keyboard.nextInt();
+            try
+            {
+                CropControl.feedThePeople(toGive, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);
         
         //output amonunt of wehat left.
          System.out.format("You now own %d bushels of wheat. \n", cropData.getWheatInStore());
