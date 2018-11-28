@@ -120,18 +120,13 @@ public class ListMenuView extends MenuView
     // ===================================
     public void listProvisions()
     {
-        //List the number of provisions in the storehouse
-        //This is my code for printing it out. It does not work I am trying
-        //To figure it out.
+        System.out.println("Provisions in the City of Aaron:");
+        for(ListItem item : theGame.getProvisions())
+        {           
+             String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
+            System.out.println(line);
+        }
         
-//        for(int i = 0; i < theGame.getProvisions().size(); i++){
-//            for(int j = 0; j < theGame.getProvisions().get(i).size(); j++)
-//            {
-//                System.out.println(theGame.getProvisions().get(i).get(j));
-//            
-//            }
-//            
-//            }
         
     }
     
