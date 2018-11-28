@@ -228,6 +228,7 @@ public class CropControl implements Serializable{
     {
         int wheatOwned = cropData.getWheatInStore();
         //If bushelsToGive < 0 return -1
+        //Error checking for both fail conditions that will throw a new exception
         if (bushelsToGive < 0)
         {
             throw new CropException("You entered a negative number.");

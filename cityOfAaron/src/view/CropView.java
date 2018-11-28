@@ -11,7 +11,7 @@ import cityofaaron.CityOfAaron;
  * @Class CIT260
  * @Brother Wright
  * @author Collin Blake
- * Date Last Modified: 11/13/2018
+ * Date Last Modified: 11/27/2018
  */
 public class CropView extends MenuView 
 {
@@ -72,6 +72,7 @@ public class CropView extends MenuView
     * Purpose: interface with the user input for buying land
     * Parameters: none
     * Returns: none
+    * @Author Collin Blake
     */
     public static void feedPeopleView()
     {
@@ -85,18 +86,17 @@ public class CropView extends MenuView
         
         //Call feed people
         do
-        {
-            
-            System.out.print("This value is invalid.\nPlease enter another value: ");
-            toGive = keyboard.nextInt();
-        
-        
+        {   
+            //Loop will end if no exceptions
             paramsNotOkay = false;
             toGive = keyboard.nextInt();
+            
+            //Try catch in case of errors.
             try
             {
                 CropControl.feedThePeople(toGive, cropData);
             }
+            //Catch process when an invalid value is input.
             catch(CropException e)
             {
                 System.out.println("I am sorry master, I cannot do this.");
