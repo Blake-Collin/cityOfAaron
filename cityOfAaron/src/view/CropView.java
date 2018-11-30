@@ -11,7 +11,7 @@ import cityofaaron.CityOfAaron;
  * @Class CIT260
  * @Brother Wright
  * @author Collin Blake
- * Date Last Modified: 11/13/2018
+ * Date Last Modified: 11/27/2018
  */
 public class CropView extends MenuView 
 {
@@ -72,6 +72,7 @@ public class CropView extends MenuView
     * Purpose: interface with the user input for buying land
     * Parameters: none
     * Returns: none
+    * @Author Collin Blake
     */
     public static void feedPeopleView()
     {
@@ -81,13 +82,28 @@ public class CropView extends MenuView
         //Get value and save it
         int toGive;
         toGive = keyboard.nextInt();
+        boolean paramsNotOkay = false;
         
         //Call feed people
-        while ( 0 > CropControl.feedThePeople(toGive, cropData))
-        {
-            System.out.print("This value is invalid.\nPlease enter another value: ");
+        do
+        {   
+            //Loop will end if no exceptions
+            paramsNotOkay = false;
             toGive = keyboard.nextInt();
-        }
+            
+            //Try catch in case of errors.
+            try
+            {
+                CropControl.feedThePeople(toGive, cropData);
+            }
+            //Catch process when an invalid value is input.
+            catch(CropException e)
+            {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
+        } while(paramsNotOkay);
         
         //output amonunt of wehat left.
          System.out.format("You now own %d bushels of wheat. \n", cropData.getWheatInStore());
