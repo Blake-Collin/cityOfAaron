@@ -153,23 +153,31 @@ public class CropView extends MenuView
         
         // Get the cost of land of this round.
         int price = CropControl.calcLandCost();
-        
-        // Promp the user to enter the number of acres to sell
         System.out.format("Land is selling for %d bushels per acre.%n",price);
-        System.out.print("How many acres of land do you wish to sell? ");
+        boolean paramsNotOkay;        
+        int toSell;           
         
-        // Get the user's input and save it.
-        int toSell;
-        toSell = keyboard.nextInt();
-        
-        //Call the sellLand() method in the control layer to buy the land 
-        while (0 > CropControl.sellLand(price, toSell, cropData))
+        //Call the sellLand() method in the control layer to buy the land
+        //Add exeptions for error handling 
+        do
         {
-            System.out.print("This value is invalid \nEnter another value: ");
+            paramsNotOkay = false;
+            // Promp the user to enter the number of acres to sell
+            System.out.print("How many acres of land do you wish to sell? ");
+            // Get the user's input and save it.
             toSell = keyboard.nextInt();
-            
+            try
+            {
+                CropControl.sellLand(price, toSell, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
         }
-        CropControl.sellLand(price, toSell, cropData);
+        while(paramsNotOkay);
         
         // output how much land we now own
         System.out.format("You now own %d acres of land. \n", cropData.getAcresOwned());
