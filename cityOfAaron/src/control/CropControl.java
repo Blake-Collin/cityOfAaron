@@ -171,15 +171,16 @@ public class CropControl implements Serializable{
     *Pre-Conditions: acresToPlant must be positive
     * and acresToPlant is less than or equal to acresOwned, 
     * and wheatInStore is two times or more than acresToPlant 
+    * Author: Daniel Martin
     */
-
-    public static int plantCrops(int acresToPlant, CropData cropData)
+    
+    public static void plantCrops(int acresToPlant, CropData cropData) throws CropException
     {
 
         //If acresToPlant < 0, return -1
         if (acresToPlant < 0)
         {
-            return -1;
+            throw new CropException("A negative value was input");
         }
             
         //If acresToPlant is > acresOwned, return -1
@@ -187,7 +188,7 @@ public class CropControl implements Serializable{
         
         if (acresToPlant > cropData.getAcresOwned())
         {
-            return -1;
+            throw new CropException("You don't own enough land");
         }
             
         //If wheatInStore < (acresToPlant / 2), return -1
@@ -195,7 +196,7 @@ public class CropControl implements Serializable{
         
         if (wheatInStore < (int) Math.ceil(acresToPlant / 2))
         {
-            return -1;
+            throw new CropException("You don't have enough wheat");
         }    
               
         //acresPlanted = acresPlanted + acresToPlant
@@ -206,10 +207,6 @@ public class CropControl implements Serializable{
         //wheatInStore = wheatInStore – (acresToPlant *2)
         wheatInStore -= ((int) Math.ceil((double)acresToPlant / 2.0));
         cropData.setWheatInStore(wheatInStore);
-        
-        //return wheatInStore
-        return wheatInStore;
-        
     }
     
     /**
