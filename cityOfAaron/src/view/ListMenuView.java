@@ -4,6 +4,9 @@ import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 import control.*;
 import model.*;
+import java.io.*;
+import java.util.ArrayList;
+import javafx.print.Printer;
 
 /**
  * The MainMenuView Class - Part of the view Layer
@@ -103,12 +106,20 @@ public class ListMenuView extends MenuView
     // ===================================
     public void listTools()
     {
-        System.out.println("Tools in the City of Aaron:");
-        for(ListItem item : theGame.getTools())
-        {           
-             String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
-            System.out.println(line);
-        }
+        int input = saveOrDisplay();           
+        if(input == 1)
+        {
+            System.out.println("Tools in the City of Aaron:");
+            for(ListItem item : theGame.getTools())
+            {           
+                 String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
+                System.out.println(line);
+            }
+        }               
+        else
+        {                        
+            saveList("Tools in the City of Aaron:","Tools", "Amount", theGame.getTools());
+        }        
     } 
     
         /**
@@ -124,7 +135,7 @@ public class ListMenuView extends MenuView
         System.out.println("Provisions in the City of Aaron:");
         for(ListItem item : theGame.getProvisions())
         {           
-             String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
+            String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
             System.out.println(line);
         }
         
@@ -142,6 +153,76 @@ public class ListMenuView extends MenuView
     {
         //List the number of Teams
         System.out.println("View Teams selected");
+    }
+
+    /**
+     * Method to get choice to display or save a list.
+     * @return selection number 
+     * @Author Collin Blake
+     */
+    private int saveOrDisplay()
+    {
+        int input;
+        //Continue asking until user gives a valid choice
+        do
+        {
+            System.out.println("Would you like to?\n"
+                             + "1 - Display\n"
+                             + "2 - Save\n");
+            input = keyboard.nextInt();
+            if(input < 1 || input > 2)
+            {
+                System.out.println("Please select a either 1 or 2!");
+            }
+        } while(input < 1 || input > 2);
+        return input;
+    }
+    
+    /**General get save path     
+     * Returns the filepath/filename for saving
+     * @Author Collin Blake
+     */     
+    private String getSavePath()
+    {
+        keyboard.reset();
+        System.out.println("Enter filepath and filename to savefile: ");
+        String filePath = keyboard.next();
+        return filePath;
+    }
+    
+    /**
+     * saveList Method does all the heavy lifting by simplifying the process taking all the inputs
+     * from the user and using one unified output to file method
+     * @param header
+     * @param list 
+     * @Author Collin Blake
+     */
+    private void saveList(String header, String column1, String column2, ArrayList<ListItem> list)
+    {
+        //Get file path
+        String filepath = getSavePath();
+        
+        //Create output writter
+        try(PrintWriter out = new PrintWriter(filepath))
+        {                
+            //Output data to file
+            out.println(header);
+            out.println(String.format("%1$-20s %2$-10s", column1, column2));
+            for(ListItem item : list)
+            {           
+                out.println(String.format("%1$-20s %2$d", item.getName(), item.getNumber()));
+            }                
+        }
+        catch (Exception e)
+        {
+            //Exception output
+            System.out.println("Failed to save data file!");
+        }
+        finally
+        {
+            //Success output
+            System.out.println("List of Tools File Saved!");
+        }
     }
 }
 

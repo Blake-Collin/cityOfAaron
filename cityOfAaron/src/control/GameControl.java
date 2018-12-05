@@ -133,7 +133,7 @@ public class GameControl {
         String village = "You stand among the City of Aaron long streets, full of\n" +
                       "busy people going about their day to day lives.\n";
         loc = new Location();
-        loc.setDescription(village + "\nNeed a hint still."); 
+        loc.setDescription(village + "\nOffering more begets greater benefits later."); 
         loc.setSymbol("&&&");
         theMap.setLocation(2,1,loc);
         
