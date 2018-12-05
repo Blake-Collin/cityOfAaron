@@ -59,7 +59,7 @@ public class CropControl implements Serializable{
             //if acresToSell< 0, return -1
         if (acresToSell< 0)
         {
-            return -1;
+           throw new CropException("Cannot enter a value less then 0!");
         }
 
         //if acresToSell> acresOwned, return -1
@@ -67,7 +67,7 @@ public class CropControl implements Serializable{
 
         if (acresToSell > cropData.getAcresOwned())
         {
-            return -1;
+            throw new CropException("Cannot sell more than we have!");
         }
 
         //acresOwned= acresOwned-acresToSell

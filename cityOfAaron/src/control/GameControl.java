@@ -12,6 +12,7 @@ import model.*;
 import cityofaaron.CityOfAaron;
 import java.util.Set;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  * @Class CIT260
@@ -241,4 +242,42 @@ public class GameControl {
         theGame.setProvisions(provisions); 
         
     }
+    
+    public static void getSavedGame(String filePath)
+    {
+        Game theGame = null;
+        
+        try (FileInputStream fips = new FileInputStream(filePath))
+        {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            theGame = (Game) input.readObject();
+            CityOfAaron.setTheGame(theGame);
+        }
+        catch (Exception e)
+        {
+            System.out.println("There was an error reading the saved game file\n");
+        }
+        finally
+        {
+            System.out.println("Your Game has been loaded succesfully!\n");
+        }    
+    }
+    
+    public static void saveGame(String filePath)
+    {                
+        try (FileOutputStream fips = new FileOutputStream(filePath))
+        {
+            ObjectOutputStream output = new ObjectOutputStream(fips);
+            output.writeObject(theGame);            
+        }
+        catch (Exception e)
+        {
+            System.out.println("There was an error saving the game file\n");
+        }
+        finally
+        {
+            System.out.println("Your game has been saved!\n");
+        }    
+    }
+    
 }

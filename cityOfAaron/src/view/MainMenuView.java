@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 import control.*;
+import java.io.*;
 
 /**
  * The MainMenuView Class - Part of the view Layer
@@ -107,8 +108,20 @@ public class MainMenuView extends MenuView
     // ===================================
     public void startSavedGame()
     {
-        System.out.println("Start saved game option selected.");
-    }
+        // get rid of \n character left in the stream
+        keyboard.reset();
+        
+        // prompt user and get a file path
+        System.out.println("Enter filepath and filename to savefile: ");
+        String filePath = keyboard.next();
+        
+        // call the getSavedGame( ) method in the GameControl class to load the game       
+        GameControl.getSavedGame(filePath);
+        
+        // display the game menu for the loaded game
+        GameMenuView gmv = new GameMenuView();
+        gmv.displayMenu();
+    }            
     
         /**
     * The displayHelpMenuView
@@ -135,6 +148,14 @@ public class MainMenuView extends MenuView
     // ===================================
     public void displaySaveGameView()
     {
-        System.out.println("Display Save Game View option selected.");
+        // get rid of \n character left in the stream
+        keyboard.reset();
+        
+        // prompt user and get a file path
+        System.out.println("Enter filepath and filename: ");
+        String filePath = keyboard.next();
+        
+        // call the getSavedGame( ) method in the GameControl class to load the game       
+        GameControl.saveGame(filePath);
     }
 }

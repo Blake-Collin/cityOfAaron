@@ -81,7 +81,6 @@ public class CropView extends MenuView
         
         //Get value and save it
         int toGive;
-        toGive = keyboard.nextInt();
         boolean paramsNotOkay = false;
         
         //Call feed people
@@ -125,8 +124,7 @@ public class CropView extends MenuView
         System.out.print("How many acres of land do you wish to buy? ");
         
         // Get the user’s input and save it.
-        int toBuy;
-        toBuy = keyboard.nextInt();
+        int toBuy;        
         boolean paramsNotOkay;
                 
         // Call the buyLand( ) method in the control layer to buy the land        
@@ -170,6 +168,8 @@ public class CropView extends MenuView
         // Get the cost of land of this round.
         int price = CropControl.calcLandCost();
         System.out.format("Land is selling for %d bushels per acre.%n",price);
+        // Promp the user to enter the number of acres to sell
+        System.out.print("How many acres of land do you wish to sell? ");
         boolean paramsNotOkay;        
         int toSell;           
         
@@ -177,9 +177,7 @@ public class CropView extends MenuView
         //Add exeptions for error handling 
         do
         {
-            paramsNotOkay = false;
-            // Promp the user to enter the number of acres to sell
-            System.out.print("How many acres of land do you wish to sell? ");
+            paramsNotOkay = false;            
             // Get the user's input and save it.
             toSell = keyboard.nextInt();
             try
@@ -209,13 +207,14 @@ public class CropView extends MenuView
     public static void plantCropsView()
     {                        
         // Get the user’s input and save it.
+        // Ask the user “How many acres of land do you want to plant?”
+        System.out.print("How many acres of land do you wish to plant?");
         int toPlant;
         boolean paramsNotOkay;
         do
         {
             paramsNotOkay = false;
-            // Ask the user “How many acres of land do you want to plant?”
-            System.out.print("How many acres of land do you wish to plant?");
+            
             // Get the user's input and save it.
             toPlant = keyboard.nextInt();
             try
