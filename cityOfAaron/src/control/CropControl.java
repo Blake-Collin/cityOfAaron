@@ -54,7 +54,7 @@ public class CropControl implements Serializable{
     * Pre-conditions: acresToSell>= 0 and acresToSell<= acresOwned
     * Returns: the number of acres owned after the sale
     */
-    public static int sellLand(int landPrice, int acresToSell, CropData cropData)
+    public static int sellLand(int landPrice, int acresToSell, CropData cropData) throws CropException
     {
             //if acresToSell< 0, return -1
         if (acresToSell< 0)
