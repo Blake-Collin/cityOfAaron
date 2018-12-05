@@ -193,8 +193,10 @@ public class ListMenuView extends MenuView
     /**
      * saveList Method does all the heavy lifting by simplifying the process taking all the inputs
      * from the user and using one unified output to file method
-     * @param header
-     * @param list 
+     * @param header Header for the file
+     * @param column1 Column 1 name displayed at top of the list
+     * @param column2 Column 2 name displayed at the top of the list
+     * @param list ArrayList<ListItem> to output
      * @Author Collin Blake
      */
     private void saveList(String header, String column1, String column2, ArrayList<ListItem> list)
