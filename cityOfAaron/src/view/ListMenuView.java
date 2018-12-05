@@ -209,6 +209,7 @@ public class ListMenuView extends MenuView
         {                
             //Output data to file
             out.println(header);
+            out.println("===============================================");
             out.println(String.format("%1$-20s %2$-10s", column1, column2));
             for(ListItem item : list)
             {           
