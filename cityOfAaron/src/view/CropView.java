@@ -182,7 +182,16 @@ public class CropView extends MenuView
             System.out.print("How many acres of land do you wish to sell? ");
             // Get the user's input and save it.
             toSell = keyboard.nextInt();
-            CropControl.sellLand(price, toSell, cropData);
+            try
+            {
+                CropControl.sellLand(price, toSell, cropData);
+            }
+            catch(CropException e)
+            {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println(e.getMessage());
+                paramsNotOkay = true;
+            }
         }
         while(paramsNotOkay);
         
@@ -196,25 +205,22 @@ public class CropView extends MenuView
     * Purpose: interface with the user input for planting crops
     * Parameters: none
     * Returns: none
-    * add exceptions for error handling
     */
     public static void plantCropsView()
-    {
-        // Ask the user “How many acres of land do you want to plant?”
-        System.out.print("How many acres of land do you wish to plant?");
-        
+    {                        
         // Get the user’s input and save it.
         int toPlant;
-        toPlant = keyboard.nextInt();
         boolean paramsNotOkay;
-        
-        // Call the plantCrops( ) method in the control layer to plant crops
         do
         {
             paramsNotOkay = false;
+            // Ask the user “How many acres of land do you want to plant?”
+            System.out.print("How many acres of land do you wish to plant?");
+            // Get the user's input and save it.
             toPlant = keyboard.nextInt();
             try
             {
+                // Call the plantCrops( ) method in the control layer to plant crops
                 CropControl.plantCrops(toPlant, cropData);
             }
             catch(CropException e)
@@ -223,10 +229,15 @@ public class CropView extends MenuView
                 System.out.println(e.getMessage());
                 paramsNotOkay = true;
             }
-        }       
+        }
         while(paramsNotOkay);
+        
+        
+        
         //output amount of wheat left in store
         System.out.format("you now have %d bushels of wheat in store.", cropData.getWheatInStore());
-    }  
+                
+    }
+      
 }
 
