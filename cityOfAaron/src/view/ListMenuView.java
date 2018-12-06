@@ -86,14 +86,21 @@ public class ListMenuView extends MenuView
     // ===================================
     public void listAnimals()
     {
-      // List the number of Animals in the storehouse
-        System.out.println("View Animals Selected");
-        for(ListItem item : theGame.getAnimals())
-        {           
-             String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
-            System.out.println(line);
-        }
-        
+        int input = saveOrDisplay();           
+        if(input == 1)
+        {
+            // List the number of Animals in the storehouse
+            System.out.println("Animals in the City of Aaron");
+            for(ListItem item : theGame.getAnimals())
+            {           
+                 String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
+                System.out.println(line);
+            }
+        }    
+        else
+        {                        
+            saveList("Animals in the City of Aaron:","Animals", "Amount", theGame.getTools());
+        }    
     }
     
     /**
