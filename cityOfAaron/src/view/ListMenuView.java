@@ -99,7 +99,7 @@ public class ListMenuView extends MenuView
         }    
         else
         {                        
-            saveList("Animals in the City of Aaron:","Animals", "Amount", theGame.getTools());
+            saveList("Animals in the City of Aaron:","Animals", "Amount", theGame.getAnimals());
         }    
     }
     
