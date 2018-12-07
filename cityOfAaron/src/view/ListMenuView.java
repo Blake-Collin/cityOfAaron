@@ -139,11 +139,20 @@ public class ListMenuView extends MenuView
     // ===================================
     public void listProvisions()
     {
-        System.out.println("Provisions in the City of Aaron:");
-        for(ListItem item : theGame.getProvisions())
-        {           
-            String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
-            System.out.println(line);
+        int input = saveOrDisplay();
+        if(input == 1)
+        {
+            System.out.println("Provisions in the City of Aaron:");
+        
+            for(ListItem item : theGame.getProvisions())
+            {           
+                String line = String.format("%1$-20s %2$d", item.getName(), item.getNumber());
+                System.out.println(line);
+            }
+
+        }
+        else {
+            saveList("Provisions in the City of Aaron:","Provisions","Amount", theGame.getProvisions());
         }
         
         
@@ -221,18 +230,15 @@ public class ListMenuView extends MenuView
             for(ListItem item : list)
             {           
                 out.println(String.format("%1$-20s %2$d", item.getName(), item.getNumber()));
-            }                
+            }
+            System.out.println("List of " + column1 + " File Saved!");
         }
         catch (Exception e)
         {
             //Exception output
             System.out.println("Failed to save data file!");
         }
-        finally
-        {
-            //Success output
-            System.out.println("List of Tools File Saved!");
-        }
+
     }
 }
 
