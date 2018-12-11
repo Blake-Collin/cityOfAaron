@@ -284,16 +284,21 @@ public class GameControl {
     
     
     /**
-     * 
+     * Change Location Method
+     * returns void
+     * Will update the character location and then tell you where you are.
+     * Author: Collin Blake
      */
     public static void ChangeLocation()
     {
         int x = -1;
         int y = -1;
         System.out.println("Enter the coordinates of the location you want to move to.");
+        //For loop to do the task twice once for x and once for y
         for(int i = 0; i < 2; i++)
         {
             boolean paramWorked = true;
+            //While loop to continue asking for values until the user inputs a valid coordiates.
             do
             {
                 try
@@ -317,12 +322,22 @@ public class GameControl {
             } while (paramWorked);
         }
         
+        //Set player values.
         theGame.getPlayer().setRow(x);
         theGame.getPlayer().setColumn(y);
         
+        //Get the discription for the location in question.
         System.out.println(theGame.getMap().getLocation(theGame.getPlayer().getRow(), theGame.getPlayer().getColumn()).getDescription());
     }
     
+    /**
+     * getLocationInput Method
+     * Will ask the user for input and throw exceptions if the user gives an invalid choice.
+     * @param location
+     * @return
+     * @throws Exception 
+     * Author Collin Blake
+     */
     public static int getLocationInput(String location) throws Exception
     {
         System.out.print("Enter the " + location + "-coordinate: ");
