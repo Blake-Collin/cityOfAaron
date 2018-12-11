@@ -13,6 +13,7 @@ import cityofaaron.CityOfAaron;
 import java.util.Set;
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Scanner;
 
 /**
  * @Class CIT260
@@ -25,6 +26,7 @@ public class GameControl {
     private static final int MAX_ROW = 5;
     private static final int MAX_COL = 5;
     private static Game theGame;
+    protected final static Scanner keyboard = new Scanner(System.in);
     
     
     public static void createNewGame(String pName)
@@ -125,7 +127,7 @@ public class GameControl {
                 "middle of your fields.\n";
                 
         loc = new Location();
-        loc.setDescription(garnary + "\nNeed a hint still."); 
+        loc.setDescription(garnary + "\nCareful the more you tribute the less likely misfortune will overcome you."); 
         loc.setSymbol("ØØØ");
         theMap.setLocation(2,2,loc);
         
@@ -139,9 +141,9 @@ public class GameControl {
         
         //Create Mountains
         String mountains = "You are standing on the peaks of mountains overlooking\n" +
-                "a valley of farmland, a village, and flowring river.\n";
+                "a valley of farmland, a village, and flowing river.\n";
         loc = new Location();
-        loc.setDescription(village + "\nNeed a hint still."); 
+        loc.setDescription(mountains + "The Mountains protect you... but from what?\n.");
         loc.setSymbol("^^^");
         
         for(int i = 0; i < MAX_ROW; i++)
@@ -156,11 +158,11 @@ public class GameControl {
     public static void displayMap()
     {   
         System.out.println("---------Map----------");
-        System.out.println("    0 | 1 | 2 | 3 | 4 ");
+        System.out.println("    1 | 2 | 3 | 4 | 5 ");
         
         for(int i = 0; i < MAX_ROW; i++)
         {
-            System.out.print(" " + i + " ");
+            System.out.print(" " + (i+1) + " ");
             for(int j = 0; j < MAX_COL; j++)
             {
                 String temp = theGame.getMap().getLocation(i, j).getSymbol();
@@ -280,4 +282,57 @@ public class GameControl {
         }    
     }
     
+    
+    /**
+     * 
+     */
+    public static void ChangeLocation()
+    {
+        int x = -1;
+        int y = -1;
+        System.out.println("Enter the coordinates of the location you want to move to.");
+        for(int i = 0; i < 2; i++)
+        {
+            boolean paramWorked = true;
+            do
+            {
+                try
+                {
+                    paramWorked = false;
+                    if(i == 0)
+                    {
+                        x = getLocationInput("x");                         
+                    }
+                    else if (i == 1)
+                    {
+                        y = getLocationInput("y");
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Sorry my lord, we don't own that land. (Please select a number between 1 and 5)");
+                    paramWorked = true;
+                }
+
+            } while (paramWorked);
+        }
+        
+        theGame.getPlayer().setRow(x);
+        theGame.getPlayer().setColumn(y);
+        
+        System.out.println(theGame.getMap().getLocation(theGame.getPlayer().getRow(), theGame.getPlayer().getColumn()).getDescription());
+    }
+    
+    public static int getLocationInput(String location) throws Exception
+    {
+        System.out.print("Enter the " + location + "-coordinate: ");
+        keyboard.reset();
+        int temp = keyboard.nextInt();
+        
+        if (temp > 5 || temp < 1)
+        {
+            throw new Exception();
+        }        
+        return (temp-1);
+    }
 }

@@ -103,7 +103,7 @@ public class GameMenuView extends MenuView {
     */
     public void moveToNewLocation()
     {
-        System.out.println("Move to New Location Option Selected.");
+        GameControl.ChangeLocation();
     }
     
     /**

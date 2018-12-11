@@ -13,6 +13,8 @@ public class Player implements Serializable {
 
     //Variables
     private String name;
+    private int row;
+    private int column;
     
     //constructor
     public Player(){}
@@ -57,4 +59,22 @@ public class Player implements Serializable {
         }
         return true;
     }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+    
+    
 }
