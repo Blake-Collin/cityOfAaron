@@ -2,6 +2,7 @@ package view;
 
 import model.*;
 import control.*;
+import view.*;
 import java.util.Scanner;
 import cityofaaron.CityOfAaron;
 
@@ -40,11 +41,18 @@ public class GameMenuView extends MenuView {
     /**
     *The doAction method
     * Purpose: performs the selected action
-    * Parameters: option selected by user
+    * @param option
     * Returns: none
+    * @Author: Jacob Gallegos
     */
     @Override public void doAction(int option)
-    {
+            
+    {   
+        //Displays the data before the options
+        CropView cropView = new CropView();
+        cropView.cropReportView();
+        
+        //Enters the options
         switch (option)
         {
             // if the option is 1, call viewMap()
